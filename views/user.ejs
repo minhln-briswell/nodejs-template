@@ -1,0 +1,112 @@
+<script type="text/javascript" src="/custom/js/user.js"></script>
+
+<!-- Main content -->
+<div class="contentInner">
+  <!--簡単検索-->
+  <section>
+    <% if (typeof message !== 'undefined') { %>
+      <%- include(`./common/message_${message.type}`, message) %>
+    <% } %>
+  <div class="container-fluid">
+    <form>
+      <div class="form-row">
+        <!-- Username -->
+        <div class="form-group col-md-5">
+          <label for="inputUsername">Username</label>
+          <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+        </div>
+        <!-- Password -->
+        <div class="form-group col-md-5">
+          <label for="inputPassword">Password</label>
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+        <!-- Role -->
+        <div class="form-group col-md-2">
+          <label for="inputRole">Role</label>
+          <select id="inputRole" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <!-- Email -->
+        <div class="form-group col-md-4">
+          <label for="inputEmail">Email</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Eg. 1234 Main St">
+      </div>
+      <div class="form-group">
+        <label for="inputAddress2">Address 2</label>
+        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">State</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Zip</label>
+          <input type="text" class="form-control" id="inputZip">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <label class="form-check-label" for="gridCheck">
+            Nothing for now
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+  <br>
+  <!-- Table -->
+  <div class="container-fluid">
+    <div class="table-responsive">
+      <table class="table" id="usersList">
+        <caption>List of users</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% userData.forEach(function(user){ %>
+            <tr id='entry-<%=user.id%>'>
+              <td>
+                <%=user.id%>
+              </td>
+              <td>
+                <%=user.name%>
+              </td>
+              <td>
+                ---
+              </td>
+              <td>
+                <%=user.role%>
+              </td>
+            </tr>
+            <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </section>
+</div>
+
+<%- contentFor('pageTitle') %>
+Index
